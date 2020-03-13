@@ -1,0 +1,231 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://P/1/Stone_tiles_floor_01_1K_Base_Color.png" type="Texture" id=1]
+[ext_resource path="res://P/1/Stone_tiles_floor_01_1K_Height.png" type="Texture" id=2]
+[ext_resource path="res://P/1/Stone_tiles_floor_01_2K_Roughness.png" type="Texture" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Target.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ammo_Pickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Health_Pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Space_Level_Objects/Space_Level_Mesh_Lib.tres" type="MeshLibrary" id=8]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 80, 90 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.313726, 0.113725, 0.439216, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 100, -100 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 80, 80 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=11]
+material = SubResource( 10 )
+size = Vector2( 80, 80 )
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="BoxShape" id=13]
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=15]
+material = SubResource( 14 )
+size = Vector2( 90, 81 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="BoxShape" id=17]
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=19]
+material = SubResource( 18 )
+size = Vector2( 90, 80 )
+
+[sub_resource type="BoxShape" id=20]
+
+[sub_resource type="SphereMesh" id=21]
+
+[sub_resource type="SpatialMaterial" id=22]
+flags_unshaded = true
+
+[node name="ubu" type="Spatial"]
+
+[node name="floor_wall" type="Spatial" parent="."]
+
+[node name="floor" type="MeshInstance" parent="floor_wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720604, -0.798264, -4.41096 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="floor_wall/floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor_wall/floor/StaticBody"]
+transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="roof" type="MeshInstance" parent="floor_wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="floor_wall/roof"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor_wall/roof/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="wall_1" type="MeshInstance" parent="floor_wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 40, -49.5523 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="StaticBody" type="StaticBody" parent="floor_wall/wall_1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor_wall/wall_1/StaticBody"]
+transform = Transform( 40, 0, 0, 0, 40, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="wall_2" type="MeshInstance" parent="floor_wall"]
+transform = Transform( 1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -0.1, 40, 40 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
+
+[node name="StaticBody" type="StaticBody" parent="floor_wall/wall_2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor_wall/wall_2/StaticBody"]
+transform = Transform( -40, 0, 0, 0, 40, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 13 )
+
+[node name="wall_3" type="MeshInstance" parent="floor_wall"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.4328, 39.604, -3.99482 )
+mesh = SubResource( 15 )
+material/0 = SubResource( 16 )
+
+[node name="StaticBody" type="StaticBody" parent="floor_wall/wall_3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor_wall/wall_3/StaticBody"]
+transform = Transform( 40, 0, 0, 0, 40, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 17 )
+
+[node name="wall_4" type="MeshInstance" parent="floor_wall"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39.9954, 40.2796, -5.05793 )
+mesh = SubResource( 19 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="floor_wall/wall_4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="floor_wall/wall_4/StaticBody"]
+transform = Transform( 40, 0, 0, 0, -40, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 20 )
+
+[node name="OmniLight" type="OmniLight" parent="floor_wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.2604, 0 )
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="floor_wall/OmniLight"]
+mesh = SubResource( 21 )
+material/0 = SubResource( 22 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0224807, 0, 0.999747, 0, 1, 0, -0.999747, 0, 0.0224807, -33.3599, -2.08619, 32.3686 )
+
+[node name="Target" type="Spatial" parent="."]
+
+[node name="Target_Whole" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10, 39 )
+
+[node name="Target_Whole2" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 12, 39 )
+
+[node name="Target_Whole3" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 15, 39 )
+
+[node name="Target_Whole4" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39, 20, 0 )
+
+[node name="Target_Whole5" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39, 30, -10.841 )
+
+[node name="Target_Whole6" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -19.497, 79, -13.471 )
+
+[node name="Target_Whole7" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.7854, 25, -39 )
+
+[node name="Target_Whole8" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.757, 70, -39 )
+
+[node name="Target_Whole9" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( -0.00112138, -0.0342532, 0.999412, 0.0326999, 0.998877, 0.0342716, -0.999465, 0.0327191, -4.36857e-08, 39.7338, 26.3914, 28.1393 )
+
+[node name="Target_Whole10" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.7925, 45.8497, 4.87109 )
+
+[node name="Target_Whole11" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.7421, 39.7555 )
+
+[node name="Target_Whole12" parent="Target" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7708, 30.8002, 39.801 )
+
+[node name="ammo" type="Spatial" parent="."]
+
+[node name="Ammo_Pickup" parent="ammo" instance=ExtResource( 6 )]
+transform = Transform( -0.164143, 0, -0.986436, 0, 1, 0, 0.986436, 0, -0.164143, -24.4447, 1.33355, 30.0162 )
+
+[node name="Ammo_Pickup2" parent="ammo" instance=ExtResource( 6 )]
+transform = Transform( -0.0935198, 0, -0.995617, 0, 1, 0, 0.995617, 0, -0.0935198, -25.6938, 1.0907, 36.4582 )
+
+[node name="Ammo_Pickup3" parent="ammo" instance=ExtResource( 6 )]
+transform = Transform( -0.824036, 0, -0.566538, 0, 1, 0, 0.566538, 0, -0.824036, 0, 58.2578, 0 )
+
+[node name="Ammo_Pickup4" parent="ammo" instance=ExtResource( 6 )]
+transform = Transform( 0.629449, 0, -0.777042, 0, 1, 0, 0.777042, 0, 0.629449, 14.3538, 58.3319, 0 )
+
+[node name="Ammo_Pickup5" parent="ammo" instance=ExtResource( 6 )]
+transform = Transform( -0.801364, 0, 0.598177, 0, 1, 0, -0.598177, 0, -0.801364, -4.92449, 58.2724, -44.8479 )
+
+[node name="Ammo_Pickup6" parent="ammo" instance=ExtResource( 6 )]
+transform = Transform( 0.0583553, 0, 0.998296, 0, 1, 0, -0.998296, 0, 0.0583553, 14.7465, 58.5521, 11.0767 )
+
+[node name="Health_Pickup" parent="ammo" instance=ExtResource( 7 )]
+transform = Transform( -0.170927, 0.0885261, -0.981298, 0.149449, 0.986761, 0.0629873, 0.973883, -0.135888, -0.181894, 8.73956, 19.1561, -1.69415 )
+
+[node name="Health_Pickup2" parent="ammo" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76308, 60.0762, -38.3322 )
+
+[node name="obj" type="Spatial" parent="."]
+
+[node name="GridMap2" type="GridMap" parent="obj"]
+mesh_library = ExtResource( 8 )
+data = {
+"cells": PoolIntArray( 1179630, 0, 6, 2, 1, 13, 7, 1, 10, 65523, 1, 13, 65528, 1, 13, 65533, 1, 13, 327682, 1, 13, 327687, 1, 10, 393203, 1, 13, 393208, 1, 13, 393213, 1, 13, 7, 2, 12, 65523, 2, 1441805, 327687, 2, 10, 393203, 2, 1441805, 655362, 2, 1441799, 655367, 2, 1441799, 720878, 2, 1441799, 720883, 2, 1441799, 720888, 2, -1609170937, 720893, 2, 1441799, 1966082, 2, 1441795, 2031598, 2, -1609170941, 2031603, 2, 538312707, 2031608, 2, 1441795, 2031613, 2, 1441795, 655372, 3, 538312709, 655376, 3, 1441797, 1966087, 3, 538312707, 1966091, 3, -1609170941, 1966096, 3, 1441795, 3, 7, 11, 7, 7, 11, 11, 7, 536870922, 12, 7, 538312714, 65521, 7, 536870923, 65526, 7, 536870923, 65531, 7, 11, 65535, 7, 536870923, 327682, 7, 536870923, 327686, 7, 11, 327691, 7, 536870922, 327696, 7, 983050, 393201, 7, 11, 393206, 7, 536870923, 393210, 7, -1610612725, 393214, 7, 11, 655362, 7, 536870919, 655367, 7, 7, 655372, 7, 538312708, 655376, 7, -1609170940, 720878, 7, 1441796, 720883, 7, 1441796, 720888, 7, 1441796, 720893, 7, 536870919, 1966081, 7, 538312707, 1966086, 7, 1441795, 1966091, 7, 1441795, 1966096, 7, 1441795, 2031598, 7, -1609170941, 2031603, 7, 538312707, 2031608, 7, 1441795, 2031613, 7, 1441795, 2, 11, 12, 7, 11, 12, 12, 11, 0, 16, 11, 536870912, 65518, 11, -1610612723, 65523, 11, 536870925, 65528, 11, 13, 65533, 11, 12, 327682, 11, -1610416116, 327687, 11, 537067532, 327692, 11, 536870912, 327696, 11, -1610612736, 393198, 11, 536870925, 393203, 11, 13, 393208, 11, 13, 393213, 11, 196620, 393228, 11, 1, 393232, 11, 1, 131084, 12, 536870917, 131088, 12, 5, 1179630, 12, 536870918, 1703952, 12, 538312707, 1769481, 12, 1441795, 1835010, 12, 1441795, 1966075, 12, 1441795, 2031598, 12, 538312707, 2031599, 12, 1441795, 2031604, 12, 538312707, 131084, 17, -1610612732, 131088, 17, 536870916, 1310713, 17, 536870918, 1376258, 17, 6, 1376263, 17, 536870918, 1507340, 17, 536870918, 1638417, 18, 536870918, 131073, 65513, 538312708, 131077, 65513, 1441796, 131081, 65513, 1441796, 131085, 65513, 1441796, 131089, 65513, 4, 196590, 65513, -1609170940, 196593, 65513, 1441796, 196597, 65513, 1441796, 196600, 65513, 538312708, 196604, 65513, 1441796, 1966082, 65513, 3, 1966086, 65513, 538312707, 1966091, 65513, 538312707, 1966096, 65513, 538312707, 2031598, 65513, 538312707, 2031603, 65513, 1441795, 2031608, 65513, 1441795, 2031598, 65514, 538312707, 2031608, 65515, 1441795, 1966096, 65516, 1441795, 458760, 65517, 6, 589825, 65517, 536870918, 327697, 65518, 6, 720893, 65518, -1610612730, 851955, 65518, 6, 1966082, 65518, 3, 1966086, 65518, 1441795, 1966091, 65518, 538312707, 2031603, 65518, -1609170941, 2031613, 65518, 538247181, 1966082, 65519, 3, 1966086, 65519, 1441795, 1966091, 65519, 1441795, 2031598, 65519, 1441795, 2031608, 65519, 1441795, 1966096, 65520, 1441795, 13, 65522, 12, 18, 65522, 12, 19, 65522, 12, 327697, 65522, 12, 327699, 65522, 536870922, 655362, 65522, 1441799, 655367, 65522, 1441799, 655369, 65522, 1441799, 655377, 65522, 1441799, 720878, 65522, 1441799, 720883, 65522, -1609170937, 720888, 65522, 1441799, 720893, 65522, 1441799, 0, 65523, 11, 4, 65523, 11, 8, 65523, 11, 13, 65523, 0, 65518, 65523, 536870922, 65523, 65523, 10, 65527, 65523, 9, 65532, 65523, 12, 327684, 65523, 11, 327689, 65523, 11, 327693, 65523, 0, 393198, 65523, 12, 393201, 65523, 12, 393204, 65523, 1441805, 393205, 65523, 13, 393209, 65523, 1441805, 393210, 65523, 12, 393215, 65523, 11, 655362, 65523, 1441799, 655367, 65523, 1441799, 655369, 65523, 1441799, 655377, 65523, 1441799, 720878, 65523, 1441799, 720883, 65523, 1441799, 720888, 65523, 1441799, 720893, 65523, 1441799, 2031603, 65523, 1441795, 2031613, 65523, 3, 1048557, 65524, 6, 1966081, 65524, 1441795, 1966086, 65524, 1441795, 1966091, 65524, 1441795, 1966096, 65524, 1441795, 2031598, 65524, 1441795, 2031608, 65524, 1441795, 2031612, 65524, 1441795, 2, 65527, 11, 7, 65527, 11, 10, 65527, 11, 65521, 65527, 12, 65525, 65527, 12, 65530, 65527, 11, 65534, 65527, 11, 327682, 65527, 11, 327685, 65527, 11, 327690, 65527, 11, 393201, 65527, 11, 393206, 65527, 11, 393210, 65527, 11, 393214, 65527, 11, 2, 65528, 9, 327682, 65528, 9, 655362, 65528, 1441799, 655367, 65528, 1441799, 655372, 65528, 1441799, 655377, 65528, 1441799, 720878, 65528, 1441799, 720883, 65528, 1441799, 720888, 65528, 1441799, 720893, 65528, 1441799, 2031603, 65528, 1441795, 1966082, 65529, 1441795, 1966087, 65529, 1441795, 1966091, 65529, 1441795, 1966096, 65529, 1441795, 2031598, 65529, 1441795, 2031608, 65529, 1441795, 2031611, 65529, 1441795, 2031614, 65529, 1441795, 7, 65532, 0, 12, 65532, 11, 17, 65532, 11, 65533, 65532, 12, 327683, 65532, 10, 327687, 65532, 0, 327692, 65532, 11, 327697, 65532, 11, 393208, 65532, 13, 393213, 65532, 10, 393215, 65532, 10, 2, 65533, 11, 65518, 65533, 0, 65523, 65533, 12, 65528, 65533, 12, 65533, 65533, 13, 327683, 65533, 11, 393198, 65533, 0, 393203, 65533, 10, 393207, 65533, 13, 393212, 65533, 13, 393215, 65533, 11, 655362, 65533, 1441799, 655367, 65533, 1441799, 655372, 65533, 1441799, 655377, 65533, 1441799, 720878, 65533, 1441799, 720883, 65533, 1441799, 720888, 65533, 1441799, 720893, 65533, 1441799, 2031598, 65533, 1441795, 2031603, 65533, 1441795, 65523, 65534, 327690, 393199, 65534, 1441802, 1966082, 65534, 1441795, 1966087, 65534, 1441795, 1966091, 65534, 1441795, 1966096, 65534, 1441795, 2031608, 65534, 1441795, 2031613, 65534, 1441795, 655372, 65535, 1441799, 655377, 65535, 1441799 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 30, 0 )
+}
+
+[node name="turret" type="Spatial" parent="."]
